@@ -39,7 +39,7 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to delete",
-                    "location": "postField",
+                    "location": "query",
                     "required": true,
                     "type": "string"
                 }
@@ -87,16 +87,17 @@
         },
         "app_config_set": {
             "_cliname": "app:config:set",
+            "additionalParameters": {
+                "_cliname": "set",
+                "description": "Key/value pairs to set",
+                "location": "query",
+                "required": true,
+                "type": "string"
+            },
             "description": "Set Ravelry-specific application configuration",
             "documentationUrl": "http://www.ravelry.com/api#app_config%2Fset",
             "httpMethod": "POST",
             "parameters": {
-                "(key_names)": {
-                    "description": "Key/value pairs to set",
-                    "location": "postField",
-                    "required": true,
-                    "type": "string"
-                },
                 "debug": {
                     "description": "Encourage Ravelry servers to retain debug information about this API call.",
                     "location": "query",
@@ -153,7 +154,7 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to delete",
-                    "location": "postField",
+                    "location": "query",
                     "required": true,
                     "type": "string"
                 }
@@ -201,16 +202,17 @@
         },
         "app_data_set": {
             "_cliname": "app:data:set",
+            "additionalParameters": {
+                "_cliname": "set",
+                "description": "Key/value pairs to set",
+                "location": "query",
+                "required": true,
+                "type": "string"
+            },
             "description": "Store user and application-specific data.",
             "documentationUrl": "http://www.ravelry.com/api#app_data%2Fset",
             "httpMethod": "POST",
             "parameters": {
-                "(key_names)": {
-                    "description": "Key/value pairs to set",
-                    "location": "postField",
-                    "required": true,
-                    "type": "string"
-                },
                 "debug": {
                     "description": "Encourage Ravelry servers to retain debug information about this API call.",
                     "location": "query",
