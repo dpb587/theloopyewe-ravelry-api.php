@@ -119,10 +119,7 @@ for ($i = 0; $i < $apiMethods->length; $i += 1) {
         $schema,
         $schemaOperation,
         $xpath,
-        $xpath->query('.//div[contains(concat(" ", normalize-space(@class), " "), " input_parameters ")]/table/tbody/tr', $apiMethod),
-        [
-            'location' => ('GET' == $schemaOperation['httpMethod']) ? 'query' : 'json',
-        ]
+        $xpath->query('.//div[contains(concat(" ", normalize-space(@class), " "), " input_parameters ")]/table/tbody/tr', $apiMethod)
     );
 
     if ('upload_image' == $schemaOperationName) {
@@ -193,7 +190,20 @@ $json = $schema['models']['json'];
 unset($schema['models']);
 $schema['models'] = ['json' => $json];
 
+ensureConsistency($schema);
+
 fwrite(STDOUT, json_encode($schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+function ensureConsistency(&$value)
+{
+    if (is_array($value)) {
+        foreach ($value as $k => &$v) {
+            ensureConsistency($v);
+        }
+
+        ksort($value);
+    }
+}
 
 function canonicalType($parameterType)
 {
@@ -291,10 +301,22 @@ function parseParameters(array $schema, array &$schemaOperation, \DOMXPath $xpat
             $schemaOperation['parameters'][$parameterName] = [];
         }
 
+        $resolved = resolveType($schema, $parameterType, $defaults);
+
         $detected = [
             'required' => ('Yes' == $parameterRequired) ? true : false,
             'description' => trim($parameterDescription),
         ];
+
+        if ((!isset($defaults['location'])) && (!isset($resolved['location']))) {
+            if ('GET' == $schemaOperation['httpMethod']) {
+                $detected['location'] = 'query';
+            } elseif ($parameterName == 'data') {
+                $detected['location'] = 'json';
+            } else {
+                $detected['location'] = 'postField';
+            }
+        }
 
         if (preg_match('#(\s\-\sone of: |\sOptions are: )(.*)#', $parameterDescription, $match)) {
             $detected['enum'] = preg_split('#,\s+#', $match[2]);
@@ -302,7 +324,7 @@ function parseParameters(array $schema, array &$schemaOperation, \DOMXPath $xpat
         }
 
         $schemaOperation['parameters'][$parameterName] = array_merge(
-            resolveType($schema, $parameterType, $defaults),
+            $resolved,
             $detected,
             $schemaOperation['parameters'][$parameterName]
         );
