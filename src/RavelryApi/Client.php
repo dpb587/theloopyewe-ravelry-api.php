@@ -8,7 +8,7 @@ use RavelryApi\Authentication\AuthenticationInterface;
 
 class Client
 {
-    const VERSION = '0.1.0-dev';
+    const VERSION = '0.2.0-dev';
 
     protected $authentication;
     protected $guzzle;
