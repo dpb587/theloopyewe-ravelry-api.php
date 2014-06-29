@@ -200,6 +200,40 @@ for ($i = 0; $i < 10; $i += 1) {
     ];
 }
 
+$favoriteTypes = [
+    'project',
+    'pattern',
+    'yarn',
+    'stash',
+    'forumpost',
+    'designer',
+    'yarnbrand',
+    'yarnshop',
+];
+
+foreach ($schema['operations'] as $op => &$value) {
+    if ('favorites_' == substr($op, 0, 10)) {
+        if (isset($value['parameters']['type'])) {
+            $value['parameters']['type']['type'] = 'string';
+            $value['parameters']['type']['enum'] = $favoriteTypes;
+        } elseif (isset($value['parameters']['types'])) {
+            $value['parameters']['types']['_clitype'] = 'array';
+            // we can't be strict here since we'll use a filter
+            unset($value['parameters']['types']['type']);
+            $value['parameters']['types']['enum'] = $favoriteTypes;
+            $value['parameters']['types']['filters'] = [
+                [
+                    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+                    'args' => [
+                        '@value',
+                        '@api',
+                    ]
+                ]
+            ];
+        }
+    }
+}
+
 $json = $schema['models']['json'];
 unset($schema['models']);
 $schema['models'] = ['json' => $json];

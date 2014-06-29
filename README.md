@@ -11,13 +11,13 @@ For integration, it's easiest to require with [Composer](https://getcomposer.org
 
     {
         "require" : {
-            "dpb587/ravelry-api" : "dev-master"
+            "theloopyewe/ravelry-api" : "dev-master"
         }
     }
 
 For development, it's easiest to install with [Composer](https://getcomposer.org/)...
 
-    git clone https://github.com/dpb587/ravelry-api-php
+    git clone https://github.com/theloopyewe/ravelry-api-php
     cd ravelry-api-php
     composer.phar install
 
@@ -75,7 +75,7 @@ Internally, the results are an object which provides some additional values...
 ## References
 
  * http://www.ravelry.com/api - Ravelry's API Documentation
- * http://github.com/dpb587/ravelry-api-php-cli - a simple CLI wrapper to this library
+ * http://github.com/theloopyewe/ravelry-api-php-cli - a simple CLI wrapper to this library
 
 
 ## License

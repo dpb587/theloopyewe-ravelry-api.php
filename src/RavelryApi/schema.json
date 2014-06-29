@@ -518,6 +518,16 @@
                 },
                 "type": {
                     "description": "The type of item that was favorited. One of: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. May only be set during creation.",
+                    "enum": [
+                        "project",
+                        "pattern",
+                        "yarn",
+                        "stash",
+                        "forumpost",
+                        "designer",
+                        "yarnbrand",
+                        "yarnshop"
+                    ],
                     "required": false,
                     "type": "string"
                 },
@@ -634,10 +644,29 @@
                     "type": "string"
                 },
                 "types": {
+                    "_clitype": "array",
                     "description": "Space delimited list of types of favorites to retrieve. Accepted options: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. Defaults to all types.",
+                    "enum": [
+                        "project",
+                        "pattern",
+                        "yarn",
+                        "stash",
+                        "forumpost",
+                        "designer",
+                        "yarnbrand",
+                        "yarnshop"
+                    ],
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "array,\n                      string"
+                    "required": false
                 },
                 "username": {
                     "description": "User to retrieve projects from",
@@ -700,6 +729,16 @@
                 },
                 "type": {
                     "description": "The type of item that was favorited. One of: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. May only be set during creation.",
+                    "enum": [
+                        "project",
+                        "pattern",
+                        "yarn",
+                        "stash",
+                        "forumpost",
+                        "designer",
+                        "yarnbrand",
+                        "yarnshop"
+                    ],
                     "required": false,
                     "type": "string"
                 },

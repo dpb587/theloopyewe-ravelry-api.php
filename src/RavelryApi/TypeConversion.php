@@ -123,4 +123,13 @@ class TypeConversion
             ]
         );
     }
+
+    public static function toSpaceSeparated($value, Parameter $parameter)
+    {
+        if (is_array($value)) {
+            return implode(' ', $value);
+        }
+
+        return $value;
+    }
 }
