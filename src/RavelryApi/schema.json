@@ -517,7 +517,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of item that was favorited. One of: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. May only be set during creation.",
+                    "description": "The type of item that was favorited. May only be set during creation.",
                     "enum": [
                         "project",
                         "pattern",
@@ -728,7 +728,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of item that was favorited. One of: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. May only be set during creation.",
+                    "description": "The type of item that was favorited. May only be set during creation.",
                     "enum": [
                         "project",
                         "pattern",
@@ -1207,7 +1207,14 @@
             "httpMethod": "GET",
             "parameters": {
                 "activity_type_keys": {
-                    "description": "Space delimited list of activity types. Currently accepted types: added-project-photo, added-stash-photo, queued-pattern, added-favorite, added-handspun-photo",
+                    "description": "Space delimited list of activity types.",
+                    "enum": [
+                        "added-project-photo",
+                        "added-stash-photo",
+                        "queued-pattern",
+                        "added-favorite",
+                        "added-handspun-photo"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
@@ -2586,7 +2593,11 @@
                     "type": "string"
                 },
                 "sort": {
-                    "description": "Sort order. Accepted options are: favorites\", and \"completed\". Default is \"completed\".",
+                    "description": "Sort order. Default is \"completed\".",
+                    "enum": [
+                        "favorites",
+                        "completed"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
@@ -4722,7 +4733,14 @@
                     "type": "number"
                 },
                 "sort": {
-                    "description": "Sort order. Should be one of: recent, alpha, weight, colorfamily, yards. Defaults to \"alpha\".",
+                    "description": "Sort order. Defaults to \"alpha\".",
+                    "enum": [
+                        "recent",
+                        "alpha",
+                        "weight",
+                        "colorfamily",
+                        "yards"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
@@ -4933,7 +4951,14 @@
                     "type": "number"
                 },
                 "sort": {
-                    "description": "Sort by should be one of: recent, alpha, weight, colorfamily, grams. Defaults to \"alpha\".",
+                    "description": "Sort by Defaults to \"alpha\".",
+                    "enum": [
+                        "recent",
+                        "alpha",
+                        "weight",
+                        "colorfamily",
+                        "grams"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"

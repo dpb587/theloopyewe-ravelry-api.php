@@ -54,6 +54,11 @@ for ($i = 0; $i < $apiModels->length; $i += 1) {
             'required' => ('Yes' == $attributeRequired) ? true : false,
             'description' => trim($attributeDescription),
         ];
+
+        if (preg_match('#(\sCurrently\s+accepted\s+types:\s+|\sShould\s+be\s+one\s+of:\s+|\sAccepted\s+options\sare:\s+|\s+\-\s+one\s+of:\s+|\sOptions\s+are:\s+|\sAccepted\s+options:\s+|\sOne\s+of:\s+)([^\.]+)\.?#mi', $schemaModel['properties'][$attributeName]['description'], $match)) {
+            $schemaModel['properties'][$attributeName]['enum'] = preg_split('#,\s+#', preg_replace('/ and /', ' ', str_replace('"', '', trim($match[2]))));
+            $schemaModel['properties'][$attributeName]['description'] = trim(preg_replace('#( +)#', ' ', str_replace(trim($match[0]), '', $schemaModel['properties'][$attributeName]['description'])));
+        }
     }
 
     $schema['models'][strtolower($schemaModelName)] = $schemaModel;
@@ -200,40 +205,6 @@ for ($i = 0; $i < 10; $i += 1) {
     ];
 }
 
-$favoriteTypes = [
-    'project',
-    'pattern',
-    'yarn',
-    'stash',
-    'forumpost',
-    'designer',
-    'yarnbrand',
-    'yarnshop',
-];
-
-foreach ($schema['operations'] as $op => &$value) {
-    if ('favorites_' == substr($op, 0, 10)) {
-        if (isset($value['parameters']['type'])) {
-            $value['parameters']['type']['type'] = 'string';
-            $value['parameters']['type']['enum'] = $favoriteTypes;
-        } elseif (isset($value['parameters']['types'])) {
-            $value['parameters']['types']['_clitype'] = 'array';
-            // we can't be strict here since we'll use a filter
-            unset($value['parameters']['types']['type']);
-            $value['parameters']['types']['enum'] = $favoriteTypes;
-            $value['parameters']['types']['filters'] = [
-                [
-                    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
-                    'args' => [
-                        '@value',
-                        '@api',
-                    ]
-                ]
-            ];
-        }
-    }
-}
-
 $json = $schema['models']['json'];
 unset($schema['models']);
 $schema['models'] = ['json' => $json];
@@ -366,13 +337,8 @@ function parseParameters(array $schema, array &$schemaOperation, \DOMXPath $xpat
             }
         }
 
-        $detected['description'] = str_replace("\r\n", "\n", trim($detected['description']));
-
-        if (preg_match('#(\s\-\sone of:\s+|\sOptions are:\s+|\sAccepted options:\s+)([^\.]+)\.?#', $parameterDescription, $match)) {
-            $detected['enum'] = preg_split('#,\s+#', trim($match[2]));
-            if (in_array('funny', $detected['enum'])) {
-                #die(print_r($match, true));
-            }
+        if (preg_match('#(\sCurrently\s+accepted\s+types:\s+|\sShould\s+be\s+one\s+of:\s+|\sAccepted\s+options\sare:\s+|\s+\-\s+one\s+of:\s+|\sOptions\s+are:\s+|\sAccepted\s+options:\s+|\sOne\s+of:\s+)([^\.]+)\.?#mi', $detected['description'], $match)) {
+            $detected['enum'] = preg_split('#,\s+#', preg_replace('/ and /', ' ', str_replace('"', '', trim($match[2]))));
             $detected['description'] = trim(preg_replace('#( +)#', ' ', str_replace(trim($match[0]), '', $detected['description'])));
         }
 
