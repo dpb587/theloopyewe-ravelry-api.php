@@ -26,7 +26,7 @@ class Client
                         $this->authentication->getDefaultRequestOptions(),
                         [
                             'headers' => [
-                                'User-Agent' => BaseClient::getDefaultUserAgent() . ' ravelry-api-php/' . static::VERSION,
+                                'User-Agent' => BaseClient::getDefaultUserAgent() . ' theloopyewe/ravelry-api-php/' . static::VERSION,
                             ],
                         ]
                     ),

@@ -5,15 +5,23 @@ namespace RavelryApi\Authentication\OauthTokenStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
- * A wrapper for persisting tokens within a Symfony2 session using an optional
- * prefix.
- */
+ * A wrapper for persisting tokens within a Symfony2 session.
+ *
+ * This uses four keys (`atoken`, `asecret`, `rtoken`, `rsecret`) which are
+ * stored, by default, under the prefix `_ravelryapi/` in the session. So, if
+ * you're inspecting it you would notice (not all keys may be present)...
+ *
+ *     $session->get('_ravelryapi/atoken'); #= '...snip...'
+ *     $session->get('_ravelryapi/asecret'); #= '...snip...'
+ *     $session->get('_ravelryapi/rtoken'); #= '...snip...'
+ *     $session->get('_ravelryapi/rsecret'); #= '...snip...'
+ **/
 class SymfonySessionTokenStorage implements TokenStorageInterface
 {
     protected $session;
     protected $prefix;
 
-    public function __construct(Session $session, $prefix = '_ravelryapi.oauth.')
+    public function __construct(Session $session, $prefix = '_ravelryapi/')
     {
         $this->session = $session;
         $this->prefix = $prefix;

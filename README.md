@@ -1,4 +1,4 @@
-A PHP library for consuming the [Ravelry API](http://www.ravelry.com/api).
+A PHP library for interacting with the [Ravelry API](http://www.ravelry.com/api).
 
 Consider this a functional prototype. This library's API may change. Not all the API calls have been tested.
 
@@ -7,22 +7,29 @@ Consider this a functional prototype. This library's API may change. Not all the
 
 ## Getting Started
 
-For integration, it's easiest to require with [Composer](https://getcomposer.org/)...
+It's fairly easy to get started with the library...
 
-    {
-        "require" : {
-            "theloopyewe/ravelry-api" : "dev-master"
-        }
-    }
 
-For development, it's easiest to install with [Composer](https://getcomposer.org/)...
+### Source Code
+
+For integration, it's easiest to require with [`composer`](https://getcomposer.org/)...
+
+    composer.phar require theloopyewe/ravelry-api=0.2.0
+
+For development, it's easiest to clone with [`git`](http://git-scm.com/)...
 
     git clone https://github.com/theloopyewe/ravelry-api-php
     cd ravelry-api-php
     composer.phar install
 
-There are two authentication methods for you to decide between. For most cases, you should use OAuth in your
-application and use your assigned access and secret key...
+
+### Authentication
+
+There are two authentication methods for you to decide between. In both cases you can find the necessary keys from the
+**apps** tab of your [Ravelry Pro](https://www.ravelry.com/pro) account.
+
+For [OAuth](http://oauth.net/), use an [`OauthTokenStorage`](./src/RavelryApi/Authentication/OauthTokenStorage) handler
+and include your access and secret key...
 
     $auth = new RavelryApi\Authentication\OauthAuthentication(
         new RavelryApi\Authentication\TokenStorage\NativeSessionTokenStorage(),
@@ -30,29 +37,34 @@ application and use your assigned access and secret key...
         $secretKey
     );
 
-For personal use with your own account, you can simply use your access and personal key...
+For personal use with your own account, you can use your access and personal key...
 
     $auth = new RavelryApi\Authentication\BasicAuthentication($accessKey, $personalKey);
 
-Then create a client, passing the authentication handler...
 
-    $ravelry = new \RavelryApi\Client($auth);
+### Usage
+
+Create a new `RavelryApi\Client`, including the authentication handler you're using...
+
+    $ravelry = new RavelryApi\Client($auth);
 
 And now you can make API calls, using the returned result like an array...
 
-    # get the first message and mark it as read
+    # find the first message from the inbox
     $id =
         $ravelry->messages->list([ 'folder' => 'inbox' ])
         ['messages'][0]['id'];
 
+    # load and show the message
     $message =
         $ravelry->messages->show([ 'id' => $id ])
         ['message'];
 
-    $ravelry->messages->markRead([ 'id' => $id ]);
-
     echo $message['content_html'];
-    #= "<p>I&#8217;m a message from the API!</p>"
+    #> <p>I&#8217;m a message from the API!</p>
+
+    # then mark it as read
+    $ravelry->messages->markRead([ 'id' => $id ]);
 
 Internally, the results are an object which provides some additional values...
 
@@ -72,10 +84,15 @@ Internally, the results are an object which provides some additional values...
     #= 'OK'
 
 
+## Examples
+
+
+
+
 ## References
 
  * http://www.ravelry.com/api - Ravelry's API Documentation
- * http://github.com/theloopyewe/ravelry-api-php-cli - a simple CLI wrapper to this library
+ * https://github.com/theloopyewe/ravelry-api-php-cli - a simple CLI for the Ravelry API which uses this library
 
 
 ## License

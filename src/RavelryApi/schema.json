@@ -645,7 +645,7 @@
                 },
                 "types": {
                     "_clitype": "array",
-                    "description": "Space delimited list of types of favorites to retrieve. Accepted options: project, pattern, yarn, stash, forumpost, designer, yarnbrand, yarnshop. Defaults to all types.",
+                    "description": "Space delimited list of types of favorites to retrieve. Defaults to all types.",
                     "enum": [
                         "project",
                         "pattern",
@@ -1101,7 +1101,15 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Type of vote to cast. Accepted options: interesting, educational, funny, agree, disagree, love",
+                    "description": "Type of vote to cast.",
+                    "enum": [
+                        "interesting",
+                        "educational",
+                        "funny",
+                        "agree",
+                        "disagree",
+                        "love"
+                    ],
                     "location": "query",
                     "required": true,
                     "type": "string"
@@ -1635,13 +1643,25 @@
                     "type": "string"
                 },
                 "sort": {
-                    "description": "Sort order. Accepted options: title, added, published, author. Multiple space-delimited options are accepted.",
+                    "description": "Sort order. Multiple space-delimited options are accepted.",
+                    "enum": [
+                        "title",
+                        "added",
+                        "published",
+                        "author"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
                 },
                 "type": {
-                    "description": "Type of source. Accepted options: book, magazine, booklet, pattern",
+                    "description": "Type of source.",
+                    "enum": [
+                        "book",
+                        "magazine",
+                        "booklet",
+                        "pattern"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
@@ -3286,10 +3306,22 @@
                     "type": "boolean"
                 },
                 "include": {
-                    "description": "Extra result parts to include. Accepted options: collections",
+                    "_clitype": "array",
+                    "description": "Extra result parts to include.",
+                    "enum": [
+                        "collections"
+                    ],
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "array,\n                      string"
+                    "required": false
                 },
                 "page": {
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
@@ -3304,7 +3336,15 @@
                     "type": "number"
                 },
                 "sort": {
-                    "description": "Sort order. Accepted options: status, name, created, started, favorites, happiness. Multiple space-delimited options are accepted.",
+                    "description": "Sort order. Multiple space-delimited options are accepted.",
+                    "enum": [
+                        "status",
+                        "name",
+                        "created",
+                        "started",
+                        "favorites",
+                        "happiness"
+                    ],
                     "location": "query",
                     "required": false,
                     "type": "string"
@@ -3501,10 +3541,22 @@
                     "type": "string"
                 },
                 "include": {
-                    "description": "Extra result parts to include. Accepted options: comments",
+                    "_clitype": "array",
+                    "description": "Extra result parts to include.",
+                    "enum": [
+                        "comments"
+                    ],
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "array,\n                      string"
+                    "required": false
                 },
                 "username": {
                     "description": "User to retrieve projects from",
@@ -4359,10 +4411,25 @@
                     "type": "string"
                 },
                 "include": {
-                    "description": "Extra result parts to include. Accepted options: brands, ad, schedules, photo",
+                    "_clitype": "array",
+                    "description": "Extra result parts to include.",
+                    "enum": [
+                        "brands",
+                        "ad",
+                        "schedules",
+                        "photo"
+                    ],
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "array,\n                      string"
+                    "required": false
                 }
             },
             "responseModel": "json",
@@ -5186,10 +5253,23 @@
                     "type": "boolean"
                 },
                 "include": {
-                    "description": "Extra result parts to include. Space delimited. Accepted options: vote_totals, user_votes",
+                    "_clitype": "array",
+                    "description": "Extra result parts to include. Space delimited.",
+                    "enum": [
+                        "vote_totals",
+                        "user_votes"
+                    ],
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "array,\n                      string"
+                    "required": false
                 },
                 "page": {
                     "description": "Result page to retrieve. Defaults to first page.",

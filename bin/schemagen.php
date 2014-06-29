@@ -366,16 +366,36 @@ function parseParameters(array $schema, array &$schemaOperation, \DOMXPath $xpat
             }
         }
 
-        if (preg_match('#(\s\-\sone of: |\sOptions are: )(.*)#', $parameterDescription, $match)) {
-            $detected['enum'] = preg_split('#,\s+#', $match[2]);
-            $detected['description'] = preg_replace('#' . preg_quote($match[0]) . '$#', '', $detected['description']);
+        $detected['description'] = str_replace("\r\n", "\n", trim($detected['description']));
+
+        if (preg_match('#(\s\-\sone of:\s+|\sOptions are:\s+|\sAccepted options:\s+)([^\.]+)\.?#', $parameterDescription, $match)) {
+            $detected['enum'] = preg_split('#,\s+#', trim($match[2]));
+            if (in_array('funny', $detected['enum'])) {
+                #die(print_r($match, true));
+            }
+            $detected['description'] = trim(preg_replace('#( +)#', ' ', str_replace(trim($match[0]), '', $detected['description'])));
         }
 
-        $schemaOperation['parameters'][$parameterName] = array_merge(
+        $merged = array_merge(
             $resolved,
             $detected,
             $schemaOperation['parameters'][$parameterName]
         );
+
+        if ('array,string' == preg_replace('/\s+/', '', $merged['type'])) {
+            $merged['_clitype'] = 'array';
+            // we can't be strict here since we'll use a filter
+            unset($merged['type']);
+            $merged['filters'][] = [
+                'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+                'args' => [
+                    '@value',
+                    '@api',
+                ]
+            ];
+        }
+
+        $schemaOperation['parameters'][$parameterName] = $merged;
 
         if ((1 == $parameters->length) && ('object' == $schemaOperation['parameters'][$parameterName]['type'])) {
             $old = $schemaOperation['parameters'][$parameterName];

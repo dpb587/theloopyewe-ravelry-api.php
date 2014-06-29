@@ -4,12 +4,21 @@ namespace RavelryApi\Authentication\OauthTokenStorage;
 
 /**
  * A wrapper for persisting tokens directly to the PHP $_SESSION superglobal.
- */
+ *
+ * This uses four keys (`atoken`, `asecret`, `rtoken`, `rsecret`) which are
+ * stored, by default, under the prefix `_ravelryapi/` in `$_SESSION`. So, if
+ * you're inspecting it you would notice (not all keys may be present)...
+ *
+ *     $_SESSION['_ravelryapi/atoken']; #= '...snip...'
+ *     $_SESSION['_ravelryapi/asecret']; #= '...snip...'
+ *     $_SESSION['_ravelryapi/rtoken']; #= '...snip...'
+ *     $_SESSION['_ravelryapi/rsecret']; #= '...snip...'
+ **/
 class NativeSessionTokenStorage implements TokenStorageInterface
 {
     protected $prefix;
 
-    public function __construct($prefix = '_ravelryapi.')
+    public function __construct($prefix = '_ravelryapi/')
     {
         $this->session = $session;
         $this->prefix = $prefix;

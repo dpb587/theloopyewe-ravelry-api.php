@@ -3,7 +3,19 @@
 namespace RavelryApi\Authentication\OauthTokenStorage;
 
 /**
- * A wrapper for persisting tokens into a flat file using JSON.
+ * A wrapper for persisting tokens into a flat file in JSON format.
+ *
+ * The file will look something like (not all keys may be present)...
+ *
+ *     {
+ *         "access_token": "...snip...",
+ *         "access_token_secret": "...snip...",
+ *         "request_token": "...snip...",
+ *         "request_token_secret": "...snip..."
+ *     }
+ *
+ * You can manually save the file with the `save` method, and, by default, it
+ * will automatically save when the process exits.
  */
 class FileTokenStorage implements TokenStorageInterface
 {
