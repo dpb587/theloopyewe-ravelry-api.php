@@ -7,7 +7,7 @@ Consider this a functional prototype. This library's API may change. Not all the
 
 ## Getting Started
 
-It's fairly easy to get started with the library...
+The main code is located in [`./src`](./src) and dependencies are managed with [Composer](https://getcomposer.org).
 
 
 ### Source Code
@@ -82,6 +82,21 @@ Internally, the results are an object which provides some additional values...
 
     $message->getStatusText();
     #= 'OK'
+
+
+## Tests
+
+The testing code is located in [`./test`](./test) and are run with [`phpunit`](http://phpunit.de/).
+
+
+### Functional Tests
+
+The functional tests will actually communicate with the Ravelry API to run through various API calls and validate the
+expected responses. You must configure a `RAVELRY_TEST_ACCESS_KEY` and `RAVELRY_TEST_PERSONAL_KEY` to use for
+authentication with the tests. All tests run as specifically as possible and avoid changing things that tests didn't
+create, however, it is testing so you should probably use a dedicated test account.
+
+There is a `./test/cleanup.php` script which will clean up any objects left behind from failed tests.
 
 
 ## References

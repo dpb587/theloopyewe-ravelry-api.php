@@ -10,7 +10,7 @@ use GuzzleHttp\Event\SubscriberInterface;
  * A simple subscriber which adds the `debug` flag to all requests, encouraging
  * Ravelry servers to retain additional debug information and API requests.
  */
-class DebugSubscriber implements SubscriberInterface
+class RavelryDebugSubscriber implements SubscriberInterface
 {
     public function getEvents()
     {

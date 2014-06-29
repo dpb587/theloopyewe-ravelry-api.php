@@ -171,6 +171,12 @@ for ($i = 0; $i < $apiMethods->length; $i += 1) {
         'required' => false,
     ];
 
+    foreach ($schemaOperation['parameters'] as $k => &$v) {
+        if (!isset($v['location'])) {
+            $v['location'] = 'json';
+        }
+    }
+
     $schema['operations'][$schemaOperationName] = $schemaOperation;
 }
 
@@ -179,14 +185,48 @@ $schema['operations']['app_config_set']['additionalParameters']['_cliname'] = 's
 $schema['operations']['app_config_set']['additionalParameters']['location'] = 'query';
 unset($schema['operations']['app_config_set']['parameters']['(key_names)']);
 
+unset($schema['operations']['app_config_get']['parameters']['keys']['type']);
+$schema['operations']['app_config_get']['parameters']['keys']['filters'][] = [
+    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+    'args' => [
+        '@value',
+        '@api',
+    ]
+];
+
 $schema['operations']['app_config_delete']['parameters']['keys']['location'] = 'query';
+unset($schema['operations']['app_config_delete']['parameters']['keys']['type']);
+$schema['operations']['app_config_delete']['parameters']['keys']['filters'][] = [
+    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+    'args' => [
+        '@value',
+        '@api',
+    ]
+];
 
 $schema['operations']['app_data_set']['additionalParameters'] = $schema['operations']['app_data_set']['parameters']['(key_names)'];
 $schema['operations']['app_data_set']['additionalParameters']['_cliname'] = 'set';
 $schema['operations']['app_data_set']['additionalParameters']['location'] = 'query';
 unset($schema['operations']['app_data_set']['parameters']['(key_names)']);
 
+unset($schema['operations']['app_data_get']['parameters']['keys']['type']);
+$schema['operations']['app_data_get']['parameters']['keys']['filters'][] = [
+    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+    'args' => [
+        '@value',
+        '@api',
+    ]
+];
+
 $schema['operations']['app_data_delete']['parameters']['keys']['location'] = 'query';
+unset($schema['operations']['app_data_delete']['parameters']['keys']['type']);
+$schema['operations']['app_data_delete']['parameters']['keys']['filters'][] = [
+    'method' => 'RavelryApi\\TypeConversion::toSpaceSeparated',
+    'args' => [
+        '@value',
+        '@api',
+    ]
+];
 
 $schema['operations']['upload_image']['parameters']['upload_token']['location'] = 'postField';
 $schema['operations']['upload_image']['parameters']['access_key']['location'] = 'postField';

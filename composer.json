@@ -30,7 +30,6 @@
   "autoload" : {
     "psr-0" : {
       "RavelryApi" : "src/",
-      "RavelryApi\\Tests" : "tests/"
     }
   }
 }

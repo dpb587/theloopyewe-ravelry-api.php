@@ -39,9 +39,17 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to delete",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": true,
-                    "type": "string"
+                    "required": true
                 }
             },
             "responseModel": "json",
@@ -77,9 +85,17 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to retrieve",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "string"
+                    "required": false
                 }
             },
             "responseModel": "json",
@@ -154,9 +170,17 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to delete",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": true,
-                    "type": "string"
+                    "required": true
                 }
             },
             "responseModel": "json",
@@ -192,9 +216,17 @@
                 },
                 "keys": {
                     "description": "Space delimited list of keys to retrieve",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toSpaceSeparated"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "string"
+                    "required": false
                 }
             },
             "responseModel": "json",
@@ -481,6 +513,7 @@
             "parameters": {
                 "comment": {
                     "description": "User defined comment",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -508,11 +541,13 @@
                 },
                 "favorited_id": {
                     "description": "The ID of the item that was favorited. May only be set during creation.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "tag_list": {
                     "description": "List of tags, space delimited",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -528,6 +563,7 @@
                         "yarnbrand",
                         "yarnshop"
                     ],
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -686,6 +722,7 @@
             "parameters": {
                 "comment": {
                     "description": "User defined comment",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -713,6 +750,7 @@
                 },
                 "favorited_id": {
                     "description": "The ID of the item that was favorited. May only be set during creation.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -724,6 +762,7 @@
                 },
                 "tag_list": {
                     "description": "List of tags, space delimited",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -739,6 +778,7 @@
                         "yarnbrand",
                         "yarnshop"
                     ],
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -782,26 +822,31 @@
                 },
                 "fiber_pack": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "location": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "name": {
                     "description": "The name that the user has given this stash entry",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "stash_status_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -945,6 +990,7 @@
                 },
                 "fiber_pack": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -956,21 +1002,25 @@
                 },
                 "location": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "name": {
                     "description": "The name that the user has given this stash entry",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "stash_status_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -1691,6 +1741,7 @@
             "parameters": {
                 "content": {
                     "description": "Message body. Markdown and limited HTML is supported. (TODO: Rich Content documentation)",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -1718,16 +1769,19 @@
                 },
                 "recipient_user_id": {
                     "description": "User to deliver the message to. One of recipient_user_id or recipient_login is required.",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "recipient_username": {
                     "description": "User to deliver the message to. One of recipient_user_id or recipient_username is required.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "subject": {
                     "description": "Message subject",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 }
@@ -1874,6 +1928,7 @@
             "parameters": {
                 "content": {
                     "description": "Message body. Markdown and limited HTML is supported. (TODO: Rich Content documentation)",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -1907,16 +1962,19 @@
                 },
                 "recipient_user_id": {
                     "description": "User to deliver the message to. One of recipient_user_id or recipient_login is required.",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "recipient_username": {
                     "description": "User to deliver the message to. One of recipient_user_id or recipient_username is required.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "subject": {
                     "description": "Message subject",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 }
@@ -2078,11 +2136,13 @@
             "parameters": {
                 "color_family_id": {
                     "description": "Color family. See /color_families.json",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "colorway": {
                     "description": "Colorway. Number or name from ball band or free form description.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -2094,6 +2154,7 @@
                 },
                 "dye_lot": {
                     "description": "Dye lot, name or number from ball band or free-form text",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -2115,101 +2176,121 @@
                 },
                 "length_units": {
                     "description": "One of 'yards', 'meters'",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_gauge_divisor": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_max_gauge": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_min_gauge": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_name": {
                     "description": "Personal name, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_shop_name": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_yarn_weight_id": {
                     "description": "Personal yarn weight, use if not linking to a yarn. See /yarn_weights.json",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "project_id": {
                     "description": "Project the pack is affiliated with",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_city": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "purchased_country_id": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_date": {
                     "description": "Date that the yarn was purchased.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "purchased_state_id": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_url": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "shop_id": {
                     "description": "Shop that the yarn was purchased from. See /shops/",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "skein_length": {
                     "description": "length of a skein of this yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "skeins": {
                     "description": "# of skeins of this yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "stash_id": {
                     "description": "Stash the pack is affiliated with",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "total_length": {
                     "description": "length of this allocation of yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "weight_units": {
                     "description": "One of 'grams', 'ounces'",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "yarn_id": {
                     "description": "Yarn that this pack (allocation of yarn) is linked to. NOTE: you only need to supply the yarn if you are associating a pack with a project and that pack is not also associated with a stash entry. On Ravelry, this would be akin to adding  a yarn to your project and linking it to a yarn (and not a stash entry)",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 }
@@ -2301,11 +2382,13 @@
             "parameters": {
                 "color_family_id": {
                     "description": "Color family. See /color_families.json",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "colorway": {
                     "description": "Colorway. Number or name from ball band or free form description.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -2317,6 +2400,7 @@
                 },
                 "dye_lot": {
                     "description": "Dye lot, name or number from ball band or free-form text",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -2338,6 +2422,7 @@
                 },
                 "length_units": {
                     "description": "One of 'yards', 'meters'",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -2349,96 +2434,115 @@
                 },
                 "personal_gauge_divisor": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_max_gauge": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_min_gauge": {
                     "description": "Personal gauge info, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_name": {
                     "description": "Personal name, use if not linking to a database yarn",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_shop_name": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_yarn_weight_id": {
                     "description": "Personal yarn weight, use if not linking to a yarn. See /yarn_weights.json",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "project_id": {
                     "description": "Project the pack is affiliated with",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_city": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "purchased_country_id": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_date": {
                     "description": "Date that the yarn was purchased.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "purchased_state_id": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "purchased_url": {
                     "description": "Personal purchase information, use if not linking to a shop",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "shop_id": {
                     "description": "Shop that the yarn was purchased from. See /shops/",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "skein_length": {
                     "description": "length of a skein of this yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "skeins": {
                     "description": "# of skeins of this yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "stash_id": {
                     "description": "Stash the pack is affiliated with",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "total_length": {
                     "description": "length of this allocation of yarn.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "weight_units": {
                     "description": "One of 'grams', 'ounces'",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "yarn_id": {
                     "description": "Yarn that this pack (allocation of yarn) is linked to. NOTE: you only need to supply the yarn if you are associating a pack with a project and that pack is not also associated with a stash entry. On Ravelry, this would be akin to adding  a yarn to your project and linking it to a yarn (and not a stash entry)",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 }
@@ -2998,11 +3102,13 @@
             "parameters": {
                 "completed": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "craft_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
@@ -3030,21 +3136,25 @@
                 },
                 "made_for": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "made_for_user_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "name": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "needle_sizes": {
                     "description": "Array of needle size records containing the metric designation for a needle size.  We will replace any existing needles with the contents of this array.",
+                    "location": "json",
                     "properties": {
                         "metric": {
                             "description": "Metric designation for hook size",
@@ -3057,11 +3167,13 @@
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "packs": {
                     "description": "Array of pack records containing detailed information about an allocation of yarn.  Only allowed on project creation. For updating or deleting use the pack API methods.",
+                    "location": "json",
                     "properties": {
                         "color_family_id": {
                             "description": "Color family. See /color_families.json",
@@ -3184,41 +3296,49 @@
                 },
                 "pattern_id": {
                     "description": "A project might have a pattern name and no pattern ID (if it is not linked to a Ravelry database pattern)",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_pattern_name": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "progress": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "project_status_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "rating": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "size": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "started": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "tag_names": {
                     "description": "Array of tags (tags cannot contain commas)",
+                    "location": "json",
                     "required": false,
                     "type": "array"
                 },
@@ -3587,11 +3707,13 @@
             "parameters": {
                 "completed": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "craft_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
@@ -3625,21 +3747,25 @@
                 },
                 "made_for": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "made_for_user_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "name": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "needle_sizes": {
                     "description": "Array of needle size records containing the metric designation for a needle size.  We will replace any existing needles with the contents of this array.",
+                    "location": "json",
                     "properties": {
                         "metric": {
                             "description": "Metric designation for hook size",
@@ -3652,11 +3778,13 @@
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "packs": {
                     "description": "Array of pack records containing detailed information about an allocation of yarn.  Only allowed on project creation. For updating or deleting use the pack API methods.",
+                    "location": "json",
                     "properties": {
                         "color_family_id": {
                             "description": "Color family. See /color_families.json",
@@ -3779,41 +3907,49 @@
                 },
                 "pattern_id": {
                     "description": "A project might have a pattern name and no pattern ID (if it is not linked to a Ravelry database pattern)",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "personal_pattern_name": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "progress": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "project_status_id": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "rating": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "size": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "started": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "tag_names": {
                     "description": "Array of tags (tags cannot contain commas)",
+                    "location": "json",
                     "required": false,
                     "type": "array"
                 },
@@ -3857,61 +3993,73 @@
                 },
                 "finish_by": {
                     "description": "Date to finish the project by, in YYYY-MM-DD format.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "make_for": {
                     "description": "Note about who the project is for. Limited to 128 characters.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "pattern_id": {
                     "description": "ID of pattern to be used for this project",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_author": {
                     "description": "Pattern author, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_name": {
                     "description": "Pattern name, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_url": {
                     "description": "Pattern URL, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_yarn_name": {
                     "description": "Yarn name, if a Ravelry yarn is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "skeins": {
                     "description": "# of skeins needed",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "sort_order": {
                     "description": "Position in queue. Defaults to last.",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "start_on": {
                     "description": "Date to start the project date, in YYYY-MM-DD format.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "tag_names": {
                     "description": "Array of tag names",
+                    "location": "json",
                     "required": false,
                     "type": "array,\n                  string"
                 },
@@ -3923,6 +4071,7 @@
                 },
                 "yarn_id": {
                     "description": "ID of yarn to be used in this project",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 }
@@ -4197,6 +4346,7 @@
                 },
                 "finish_by": {
                     "description": "Date to finish the project by, in YYYY-MM-DD format.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -4207,56 +4357,67 @@
                 },
                 "make_for": {
                     "description": "Note about who the project is for. Limited to 128 characters.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "pattern_id": {
                     "description": "ID of pattern to be used for this project",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_author": {
                     "description": "Pattern author, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_name": {
                     "description": "Pattern name, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_pattern_url": {
                     "description": "Pattern URL, if a Ravelry pattern is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "personal_yarn_name": {
                     "description": "Yarn name, if a Ravelry yarn is not linked",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "skeins": {
                     "description": "# of skeins needed",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "sort_order": {
                     "description": "Position in queue. Defaults to last.",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
                 "start_on": {
                     "description": "Date to start the project date, in YYYY-MM-DD format.",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "tag_names": {
                     "description": "Array of tag names",
+                    "location": "json",
                     "required": false,
                     "type": "array,\n                  string"
                 },
@@ -4268,6 +4429,7 @@
                 },
                 "yarn_id": {
                     "description": "ID of yarn to be used in this project",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 }
@@ -4460,6 +4622,7 @@
                 },
                 "dye_lot": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -4481,21 +4644,25 @@
                 },
                 "handspun": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "boolean"
                 },
                 "location": {
                     "description": "Description of where the stashed yarn is stored",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "pack": {
                     "description": "The pack record contains detailed information about an allocation of yarn",
+                    "location": "json",
                     "properties": {
                         "color_family_id": {
                             "description": "Color family. See /color_families.json",
@@ -4618,6 +4785,7 @@
                 },
                 "stash_status_id": {
                     "description": "1 = active, 2 = used up, 3 = will trade/sell, 4 = gone/sold",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
@@ -4629,6 +4797,7 @@
                 },
                 "yarn_id": {
                     "description": "Yarn to link the stash entry to",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 }
@@ -4987,6 +5156,7 @@
                 },
                 "dye_lot": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
@@ -5008,6 +5178,7 @@
                 },
                 "handspun": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "boolean"
                 },
@@ -5019,16 +5190,19 @@
                 },
                 "location": {
                     "description": "Description of where the stashed yarn is stored",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "notes": {
                     "description": "",
+                    "location": "json",
                     "required": false,
                     "type": "string"
                 },
                 "pack": {
                     "description": "The pack record contains detailed information about an allocation of yarn",
+                    "location": "json",
                     "properties": {
                         "color_family_id": {
                             "description": "Color family. See /color_families.json",
@@ -5151,6 +5325,7 @@
                 },
                 "stash_status_id": {
                     "description": "1 = active, 2 = used up, 3 = will trade/sell, 4 = gone/sold",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 },
@@ -5162,6 +5337,7 @@
                 },
                 "yarn_id": {
                     "description": "Yarn to link the stash entry to",
+                    "location": "json",
                     "required": false,
                     "type": "integer"
                 }
