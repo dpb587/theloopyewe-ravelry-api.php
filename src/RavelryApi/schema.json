@@ -4499,15 +4499,31 @@
                 },
                 "lat": {
                     "description": "latitude for geographical search",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toFloat"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "float"
+                    "required": false
                 },
                 "lng": {
                     "description": "longitude for geographical search",
+                    "filters": [
+                        {
+                            "args": [
+                                "@value",
+                                "@api"
+                            ],
+                            "method": "RavelryApi\\TypeConversion::toFloat"
+                        }
+                    ],
                     "location": "query",
-                    "required": false,
-                    "type": "float"
+                    "required": false
                 },
                 "page": {
                     "description": "result page to retrieve. Defaults to 1 (the first page).",

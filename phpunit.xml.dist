@@ -30,7 +30,9 @@
     </filter>
 
     <listeners>
-        <!-- this will dump the http request/responses used in a failed/errored/incomplete test -->
+        <!-- this records the http request/responses used in tests, then dumps
+             dumps them if a test fails, errors, or is marked incomplete
+             -->
         <listener class="RavelryApi\Tests\Listener\HttpRequestTestListener" />
     </listeners>
 </phpunit>

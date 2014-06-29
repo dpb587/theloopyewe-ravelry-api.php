@@ -175,6 +175,18 @@ for ($i = 0; $i < $apiMethods->length; $i += 1) {
         if (!isset($v['location'])) {
             $v['location'] = 'json';
         }
+
+        if ((isset($v['type'])) && ('float' == $v['type'])) {
+            // i wish guzzle would run filters before type checks
+            unset($v['type']);
+            $v['filters'][] = [
+                'method' => 'RavelryApi\\TypeConversion::toFloat',
+                'args' => [
+                    '@value',
+                    '@api',
+                ]
+            ];
+        }
     }
 
     $schema['operations'][$schemaOperationName] = $schemaOperation;

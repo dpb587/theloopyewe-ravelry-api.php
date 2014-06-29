@@ -53,6 +53,19 @@ class TypeConversion
         }
     }
 
+    public static function toFloat($value)
+    {
+        if (is_string($value)) {
+            if ((string) (float) $value != $value) {
+                throw new \UnexpectedValueException(sprintf('The value "%s" should be a float.', $value));
+            }
+
+            return (float) $value;
+        } else {
+            return $value;
+        }
+    }
+
     public static function toQuotedEtag($value)
     {
         if (preg_match('#^("|\')(.*)("|\')$#', $value)) {
