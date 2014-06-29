@@ -84,11 +84,6 @@ Internally, the results are an object which provides some additional values...
     #= 'OK'
 
 
-## Examples
-
-
-
-
 ## References
 
  * http://www.ravelry.com/api - Ravelry's API Documentation
