@@ -34,5 +34,14 @@
              dumps them if a test fails, errors, or is marked incomplete
              -->
         <listener class="RavelryApi\Tests\Listener\HttpRequestTestListener" />
+
+        <!-- this keeps track of which api methods and parameters were tested
+             to make it easier to see that sort of test coverage
+             -->
+        <listener class="RavelryApi\Tests\Listener\ApiUsageTestListener">
+            <arguments>
+                <string>./api-coverage.html</string>
+            </arguments>
+        </listener>
     </listeners>
 </phpunit>

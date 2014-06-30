@@ -3,8 +3,8 @@
 namespace RavelryApi\Tests\Functional;
 
 use GuzzleHttp\Event\SubscriberInterface;
-use RavelryApi\Client;
 use RavelryApi\Authentication\BasicAuthentication;
+use RavelryApi\Client;
 
 /**
  * @group functional
@@ -13,6 +13,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 {
     protected $client;
     private $clientListeners = [];
+    private $serviceClientListeners = [];
 
     static public function createClient()
     {
@@ -39,6 +40,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
         }
 
         $this->clientListeners = [];
+
+        foreach ($this->serviceClientListeners as $serviceClientListener) {
+            $this->attachServiceClientListener($serviceClientListener);
+        }
+
+        $this->serviceClientListeners = [];
     }
 
     public function tearDown()
@@ -52,6 +59,17 @@ class TestCase extends \PHPUnit_Framework_TestCase
             $this->client->getGuzzle()->getEmitter()->attach($clientListener);
         } else {
             $this->clientListeners[] = $clientListener;
+        }
+
+        return $this;
+    }
+
+    public function attachServiceClientListener(SubscriberInterface $serviceClientListener)
+    {
+        if (null !== $this->client) {
+            $this->client->getServiceClient()->getEmitter()->attach($serviceClientListener);
+        } else {
+            $this->serviceClientListeners[] = $serviceClientListener;
         }
 
         return $this;

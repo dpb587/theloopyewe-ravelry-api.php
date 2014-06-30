@@ -85,6 +85,14 @@ class Client
     }
 
     /**
+     * Get the cor service client.
+     */
+    public function getServiceClient()
+    {
+        return $this->serviceClient;
+    }
+
+    /**
      * This makes the API look a bit more segmented supporting calls like:
      *
      *     $api->inStoreSales->addByPattern(...)
