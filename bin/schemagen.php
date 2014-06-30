@@ -192,6 +192,34 @@ for ($i = 0; $i < $apiMethods->length; $i += 1) {
     $schema['operations'][$schemaOperationName] = $schemaOperation;
 }
 
+$schema['operations']['patterns_search']['additionalParameters'] = [
+    '_cliname' => 'facet',
+    'description' => 'Facet key/value pairs derived from ravelry.com interface',
+    'location' => 'query',
+    'type' => 'string',
+];
+
+$schema['operations']['projects_search']['additionalParameters'] = [
+    '_cliname' => 'facet',
+    'description' => 'Facet key/value pairs derived from ravelry.com interface',
+    'location' => 'query',
+    'type' => 'string',
+];
+
+$schema['operations']['stash_search']['additionalParameters'] = [
+    '_cliname' => 'facet',
+    'description' => 'Facet key/value pairs derived from ravelry.com interface',
+    'location' => 'query',
+    'type' => 'string',
+];
+
+$schema['operations']['yarns_search']['additionalParameters'] = [
+    '_cliname' => 'facet',
+    'description' => 'Facet key/value pairs derived from ravelry.com interface',
+    'location' => 'query',
+    'type' => 'string',
+];
+
 $schema['operations']['app_config_set']['additionalParameters'] = $schema['operations']['app_config_set']['parameters']['(key_names)'];
 $schema['operations']['app_config_set']['additionalParameters']['_cliname'] = 'set';
 $schema['operations']['app_config_set']['additionalParameters']['location'] = 'query';

@@ -16,6 +16,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     static public function createClient()
     {
+        if (0 == strlen(getenv('RAVELRY_TEST_ACCESS_KEY'))) {
+            throw new \LogicException('Environment variable RAVELRY_TEST_ACCESS_KEY must be defined.');
+        } elseif (0 == strlen(getenv('RAVELRY_TEST_PERSONAL_KEY'))) {
+            throw new \LogicException('Environment variable RAVELRY_TEST_PERSONAL_KEY must be defined.');
+        }
+        
         return new Client(
             new BasicAuthentication(
                 getenv('RAVELRY_TEST_ACCESS_KEY'),
