@@ -67,6 +67,9 @@ class HttpRequestTestListener extends PHPUnit_Framework_BaseTestListener impleme
             'complete' => [
                 'onComplete'
             ],
+            'error' => [
+                'onComplete'
+            ],
         ];
     }
 
