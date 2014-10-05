@@ -1,35 +1,38 @@
 {
-  "name" : "theloopyewe/ravelry-api",
-  "description" : "A library for consuming the Ravelry API with PHP.",
-  "keywords" : [ "api", "ravelry" ],
-  "homepage" : "https://github.com/theloopyewe/ravelry-api-php",
-  "license" : "MIT",
+    "name" : "dpb587/ravelry-api",
+    "description" : "A PHP library for interacting with the Ravelry API.",
+    "keywords" : [
+        "api",
+        "ravelry"
+    ],
+    "homepage" : "https://github.com/dpb587/ravelry-api.php",
+    "license" : "MIT",
 
-  "minimum-stability" : "dev",
+    "minimum-stability" : "dev",
 
-  "authors" : [
-    {
-      "name" : "Danny Berger",
-      "email" : "dpb587@gmail.com",
-      "homepage" : "https://dpb587.me"
+    "authors" : [
+        {
+            "name" : "Danny Berger",
+            "email" : "dpb587@gmail.com",
+            "homepage" : "https://dpb587.me"
+        }
+    ],
+
+    "require" : {
+        "php" : ">=5.4.0",
+        "guzzlehttp/guzzle" : "4.0.2",
+        "guzzlehttp/guzzle-services" : "0.2.0",
+        "guzzlehttp/oauth-subscriber": "dev-master"
+    },
+
+    "require-dev" : {
+        "phpunit/phpunit" : "4.1.1",
+        "symfony/http-foundation" : "2.3.*"
+    },
+
+    "autoload" : {
+        "psr-0" : {
+            "RavelryApi" : "src/"
+        }
     }
-  ],
-
-  "require" : {
-    "php" : ">=5.4.0",
-    "guzzlehttp/guzzle" : "4.0.2",
-    "guzzlehttp/guzzle-services" : "0.2.0",
-    "guzzlehttp/oauth-subscriber": "dev-master"
-  },
-
-  "require-dev" : {
-    "phpunit/phpunit" : "4.1.1",
-    "symfony/http-foundation" : "2.3.*"
-  },
-
-  "autoload" : {
-    "psr-0" : {
-      "RavelryApi" : "src/",
-    }
-  }
 }

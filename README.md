@@ -7,18 +7,18 @@ Consider this a functional prototype. This library's API may change. Not all the
 
 ## Getting Started
 
-The main code is located in [`./src`](./src) and dependencies are managed with [Composer](https://getcomposer.org).
+The source code is located in [`./src`](./src) and dependencies are managed with [Composer](https://getcomposer.org).
 
 
-### Source Code
+### Download
 
 For integration, it's easiest to require with [`composer`](https://getcomposer.org/)...
 
-    composer.phar require theloopyewe/ravelry-api=0.2.0
+    composer.phar require dpb587/ravelry-api=0.2.0
 
 For development, it's easiest to clone with [`git`](http://git-scm.com/)...
 
-    git clone https://github.com/theloopyewe/ravelry-api-php
+    git clone https://github.com/dpb587/ravelry-api-php
     cd ravelry-api-php
     composer.phar install
 
@@ -102,7 +102,7 @@ There is a `./test/cleanup.php` script which will clean up any objects left behi
 ## References
 
  * http://www.ravelry.com/api - Ravelry's API Documentation
- * https://github.com/theloopyewe/ravelry-api-php-cli - a simple CLI for the Ravelry API which uses this library
+ * https://github.com/dpb587/ravelry-api-php-cli - a CLI for the API (uses this library)
 
 
 ## License
