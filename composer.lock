@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41962b4b9c52e7645418439296e98dcd",
+    "hash": "3293977e750e93a4d3377c83dddd0d57",
     "packages": [
         {
             "name": "guzzlehttp/command",
-            "version": "0.4.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/command.git",
-                "reference": "a06e799bca01ebddf46757e678ede6cf17147f9e"
+                "reference": "bf2d3c4c43f81ddf14fe12233bb94cfff24f1f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/command/zipball/a06e799bca01ebddf46757e678ede6cf17147f9e",
-                "reference": "a06e799bca01ebddf46757e678ede6cf17147f9e",
+                "url": "https://api.github.com/repos/guzzle/command/zipball/bf2d3c4c43f81ddf14fe12233bb94cfff24f1f6c",
+                "reference": "bf2d3c4c43f81ddf14fe12233bb94cfff24f1f6c",
                 "shasum": ""
             },
             "require": {
@@ -28,6 +28,11 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.6-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\Command\\": "src/"
@@ -45,24 +50,25 @@
                 }
             ],
             "description": "Provides the foundation for building command based web service clients",
-            "time": "2014-04-30 03:48:46"
+            "time": "2014-08-22 23:49:28"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.0.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "40db53833aaea528347994acd4578d7b9b2211ee"
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/40db53833aaea528347994acd4578d7b9b2211ee",
-                "reference": "40db53833aaea528347994acd4578d7b9b2211ee",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/streams": "~1.0",
+                "ext-json": "*",
+                "guzzlehttp/streams": "~2.1",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -70,10 +76,13 @@
                 "phpunit/phpunit": "~4.0",
                 "psr/log": "~1.0"
             },
+            "suggest": {
+                "ext-curl": "Guzzle will use specific adapters if cURL is present"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -106,20 +115,20 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-04-16 17:33:22"
+            "time": "2014-10-05 19:29:14"
         },
         {
             "name": "guzzlehttp/guzzle-services",
-            "version": "0.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle-services.git",
-                "reference": "e079a728689a28e9f4427264bcfc77d0dd6fa98d"
+                "reference": "e4511fcee6847059c8cdbb1ae48b26dbaa59f420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/e079a728689a28e9f4427264bcfc77d0dd6fa98d",
-                "reference": "e079a728689a28e9f4427264bcfc77d0dd6fa98d",
+                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/e4511fcee6847059c8cdbb1ae48b26dbaa59f420",
+                "reference": "e4511fcee6847059c8cdbb1ae48b26dbaa59f420",
                 "shasum": ""
             },
             "require": {
@@ -130,6 +139,11 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\Command\\Guzzle\\": "src/"
@@ -147,7 +161,7 @@
                 }
             ],
             "description": "Provides an implementation of the Guzzle Command library that uses Guzzle service descriptions to describe web services, serialize requests, and parse responses into easy to use model structures.",
-            "time": "2014-03-30 23:24:04"
+            "time": "2014-09-15 01:44:09"
         },
         {
             "name": "guzzlehttp/oauth-subscriber",
@@ -155,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/oauth-subscriber.git",
-                "reference": "f5e857b5ab34279611c171111c40000435299698"
+                "reference": "43ff29ed74cf8f90490ce41ec64c38d1ea7dc7e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/f5e857b5ab34279611c171111c40000435299698",
-                "reference": "f5e857b5ab34279611c171111c40000435299698",
+                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/43ff29ed74cf8f90490ce41ec64c38d1ea7dc7e7",
+                "reference": "43ff29ed74cf8f90490ce41ec64c38d1ea7dc7e7",
                 "shasum": ""
             },
             "require": {
@@ -171,6 +185,11 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\Subscriber\\Oauth\\": "src"
@@ -193,20 +212,20 @@
                 "Guzzle",
                 "oauth"
             ],
-            "time": "2014-05-20 00:04:02"
+            "time": "2014-08-07 22:54:40"
         },
         {
             "name": "guzzlehttp/streams",
-            "version": "1.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/streams.git",
-                "reference": "cf0c8c33ca95cc147efba4c714f630ee44767180"
+                "reference": "30d5c8e7646e004768054c4143a433c89bc9ece0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/cf0c8c33ca95cc147efba4c714f630ee44767180",
-                "reference": "cf0c8c33ca95cc147efba4c714f630ee44767180",
+                "url": "https://api.github.com/repos/guzzle/streams/zipball/30d5c8e7646e004768054c4143a433c89bc9ece0",
+                "reference": "30d5c8e7646e004768054c4143a433c89bc9ece0",
                 "shasum": ""
             },
             "require": {
@@ -218,7 +237,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -246,35 +265,89 @@
                 "Guzzle",
                 "stream"
             ],
-            "time": "2014-04-03 04:48:24"
+            "time": "2014-09-15 01:45:40"
         }
     ],
     "packages-dev": [
+        {
+            "name": "doctrine/instantiator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "4bdc0421209a00e6f425f4c3554d1b0df3a7e897"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/4bdc0421209a00e6f425f4c3554d1b0df3a7e897",
+                "reference": "4bdc0421209a00e6f425f4c3554d1b0df3a7e897",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.3"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "ext-pdo": "*",
+                "ext-phar": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Instantiator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+            "homepage": "https://github.com/doctrine/instantiator",
+            "keywords": [
+                "constructor",
+                "instantiate"
+            ],
+            "time": "2014-10-05 00:20:37"
+        },
         {
             "name": "phpunit/php-code-coverage",
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "58401826c8cfc8fd689b60026e91c337df374bca"
+                "reference": "62f8cd539ab2e2c25077aeb5f5ed3209acee3612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/58401826c8cfc8fd689b60026e91c337df374bca",
-                "reference": "58401826c8cfc8fd689b60026e91c337df374bca",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/62f8cd539ab2e2c25077aeb5f5ed3209acee3612",
+                "reference": "62f8cd539ab2e2c25077aeb5f5ed3209acee3612",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "phpunit/php-file-iterator": "~1.3.1",
-                "phpunit/php-text-template": "~1.2.0",
-                "phpunit/php-token-stream": "~1.2.2",
-                "sebastian/environment": "~1.0.0",
-                "sebastian/version": "~1.0.3"
+                "phpunit/php-file-iterator": "~1.3",
+                "phpunit/php-text-template": "~1.2",
+                "phpunit/php-token-stream": "~1.3",
+                "sebastian/environment": "~1.0",
+                "sebastian/version": "~1.0"
             },
             "require-dev": {
                 "ext-xdebug": ">=2.1.4",
-                "phpunit/phpunit": "~4.0.14"
+                "phpunit/phpunit": "~4.1"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -313,7 +386,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-05-26 14:55:24"
+            "time": "2014-09-01 22:04:15"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -454,41 +527,40 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "955c24b708f8bfd6a05f303217a8dac3a443d531"
+                "reference": "f8d5d08c56de5cfd592b3340424a81733259a876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/955c24b708f8bfd6a05f303217a8dac3a443d531",
-                "reference": "955c24b708f8bfd6a05f303217a8dac3a443d531",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/f8d5d08c56de5cfd592b3340424a81733259a876",
+                "reference": "f8d5d08c56de5cfd592b3340424a81733259a876",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "php": ">=5.3.3"
             },
+            "require-dev": {
+                "phpunit/phpunit": "~4.2"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
                 "classmap": [
-                    "PHP/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
-                    "role": "lead"
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Wrapper around PHP's tokenizer extension.",
@@ -496,7 +568,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2014-05-12 05:34:42"
+            "time": "2014-08-31 06:12:13"
         },
         {
             "name": "phpunit/phpunit",
@@ -578,20 +650,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "faf167fdda13caedf90c2d76d3a6cb23802cdac3"
+                "reference": "96c5b81f9842f38fe6c73ad0020306cc4862a9e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/faf167fdda13caedf90c2d76d3a6cb23802cdac3",
-                "reference": "faf167fdda13caedf90c2d76d3a6cb23802cdac3",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/96c5b81f9842f38fe6c73ad0020306cc4862a9e3",
+                "reference": "96c5b81f9842f38fe6c73ad0020306cc4862a9e3",
                 "shasum": ""
             },
             "require": {
+                "doctrine/instantiator": "~1.0,>=1.0.2",
                 "php": ">=5.3.3",
                 "phpunit/php-text-template": "~1.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.2.*@dev"
+                "phpunit/phpunit": "4.4.*@dev"
             },
             "suggest": {
                 "ext-soap": "*"
@@ -599,7 +672,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.4.x-dev"
                 }
             },
             "autoload": {
@@ -608,9 +681,6 @@
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
             "license": [
                 "BSD-3-Clause"
             ],
@@ -627,7 +697,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2014-05-26 09:56:12"
+            "time": "2014-10-04 10:04:20"
         },
         {
             "name": "sebastian/comparator",
@@ -700,21 +770,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "ac84cfdec593945f36f24074d6ea17d296e86f76"
+                "reference": "5843509fed39dee4b356a306401e9dd1a931fec7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/ac84cfdec593945f36f24074d6ea17d296e86f76",
-                "reference": "ac84cfdec593945f36f24074d6ea17d296e86f76",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/5843509fed39dee4b356a306401e9dd1a931fec7",
+                "reference": "5843509fed39dee4b356a306401e9dd1a931fec7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "require-dev": {
+                "phpunit/phpunit": "~4.2"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -728,13 +801,12 @@
             ],
             "authors": [
                 {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                },
-                {
                     "name": "Kore Nordmann",
                     "email": "mail@kore-nordmann.de"
+                },
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Diff implementation",
@@ -742,7 +814,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2014-05-12 05:21:40"
+            "time": "2014-08-15 10:29:00"
         },
         {
             "name": "sebastian/environment",
@@ -801,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "eb54a69388e5b7ea48561a65588f067fdda0c886"
+                "reference": "c7d59948d6e82818e1bdff7cadb6c34710eb7dc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/eb54a69388e5b7ea48561a65588f067fdda0c886",
-                "reference": "eb54a69388e5b7ea48561a65588f067fdda0c886",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/c7d59948d6e82818e1bdff7cadb6c34710eb7dc0",
+                "reference": "c7d59948d6e82818e1bdff7cadb6c34710eb7dc0",
                 "shasum": ""
             },
             "require": {
@@ -832,11 +904,6 @@
             ],
             "authors": [
                 {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                },
-                {
                     "name": "Jeff Welch",
                     "email": "whatthejeff@gmail.com"
                 },
@@ -845,12 +912,16 @@
                     "email": "github@wallbash.com"
                 },
                 {
-                    "name": "Adam Harvey",
-                    "email": "aharvey@php.net"
-                },
-                {
                     "name": "Bernhard Schussek",
                     "email": "bschussek@2bepublished.at"
+                },
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                },
+                {
+                    "name": "Adam Harvey",
+                    "email": "aharvey@php.net"
                 }
             ],
             "description": "Provides the functionality to export PHP variables for visualization",
@@ -859,7 +930,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2014-05-05 08:31:02"
+            "time": "2014-09-10 00:51:36"
         },
         {
             "name": "sebastian/version",
@@ -903,12 +974,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "ad7891d4dfe221c5a9edca64b71bdb500f5b026a"
+                "reference": "c8f7e5cfa96c7da25f97bd664f9fd3f3d5bdce92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/ad7891d4dfe221c5a9edca64b71bdb500f5b026a",
-                "reference": "ad7891d4dfe221c5a9edca64b71bdb500f5b026a",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/c8f7e5cfa96c7da25f97bd664f9fd3f3d5bdce92",
+                "reference": "c8f7e5cfa96c7da25f97bd664f9fd3f3d5bdce92",
                 "shasum": ""
             },
             "require": {
@@ -934,19 +1005,17 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-22 16:20:26"
+            "time": "2014-10-01 05:38:33"
         },
         {
             "name": "symfony/yaml",
@@ -955,12 +1024,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "d151f00d4fae107ea0d70ade6b0d2d3e81f45ecd"
+                "reference": "499f7d7aa96747ad97940089bd7a1fb24ad8182a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/d151f00d4fae107ea0d70ade6b0d2d3e81f45ecd",
-                "reference": "d151f00d4fae107ea0d70ade6b0d2d3e81f45ecd",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/499f7d7aa96747ad97940089bd7a1fb24ad8182a",
+                "reference": "499f7d7aa96747ad97940089bd7a1fb24ad8182a",
                 "shasum": ""
             },
             "require": {
@@ -983,28 +1052,26 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-23 14:36:49"
+            "time": "2014-10-05 13:53:50"
         }
     ],
     "aliases": [
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "guzzlehttp/oauth-subscriber": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.4.0"
     },

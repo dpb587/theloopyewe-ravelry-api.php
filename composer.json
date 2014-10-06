@@ -20,9 +20,9 @@
 
     "require" : {
         "php" : ">=5.4.0",
-        "guzzlehttp/guzzle" : "4.0.2",
-        "guzzlehttp/guzzle-services" : "0.2.0",
-        "guzzlehttp/oauth-subscriber": "dev-master"
+        "guzzlehttp/guzzle" : "4.2.*",
+        "guzzlehttp/guzzle-services" : "0.3.*",
+        "guzzlehttp/oauth-subscriber": "0.1.*"
     },
 
     "require-dev" : {
