@@ -443,7 +443,7 @@ function parseParameters(array $schema, array &$schemaOperation, \DOMXPath $xpat
 
         $schemaOperation['parameters'][$parameterName] = $merged;
 
-        if ((1 == $parameters->length) && ('object' == $schemaOperation['parameters'][$parameterName]['type'])) {
+        if ((1 == $parameters->length) && isset($schemaOperation['parameters'][$parameterName]['type']) && ('object' == $schemaOperation['parameters'][$parameterName]['type'])) {
             $old = $schemaOperation['parameters'][$parameterName];
             unset($schemaOperation['parameters'][$parameterName]);
 
