@@ -271,74 +271,6 @@
             "responseModel": "json",
             "uri": "/app/data/set.json"
         },
-        "bundleditems_create": {
-            "_cliname": "bundled-items:create",
-            "description": "Create pack",
-            "documentationUrl": "http://www.ravelry.com/api#bundled_items_create",
-            "httpMethod": "POST",
-            "parameters": {
-                "bookmark_id": {
-                    "description": "",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "bundle_id": {
-                    "description": "bundle identifier",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                },
-                "debug": {
-                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
-                    "location": "query",
-                    "required": false,
-                    "type": "boolean"
-                },
-                "etag": {
-                    "description": "The HTTP Etag to present upstream.",
-                    "filters": [
-                        "RavelryApi\\TypeConversion::toQuotedEtag"
-                    ],
-                    "location": "header",
-                    "required": false,
-                    "sentAs": "If-None-Match",
-                    "type": "string"
-                },
-                "extras": {
-                    "description": "Include extra \"polling\" data in the result.",
-                    "location": "query",
-                    "required": false,
-                    "type": "boolean"
-                },
-                "item_id": {
-                    "description": "item identifier. May only be set during creation.",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                },
-                "item_type": {
-                    "description": "the type of item - clipping, pattern, designer, project, stash, yarn_company, yarn, shop, forum_post, fiber_stash, bundle, or pattern_source",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "notes": {
-                    "description": "",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "user_id": {
-                    "description": "User ID of the item owner.",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                }
-            },
-            "responseModel": "json",
-            "uri": "/bundled_items/create.json"
-        },
         "bundleditems_delete": {
             "_cliname": "bundled-items:delete",
             "description": "Delete bundled item",
@@ -414,80 +346,6 @@
             },
             "responseModel": "json",
             "uri": "/bundled_items/{bundled_item_id}.json"
-        },
-        "bundleditems_update": {
-            "_cliname": "bundled-items:update",
-            "description": "Update an existing bundled item record",
-            "documentationUrl": "http://www.ravelry.com/api#bundled_items_update",
-            "httpMethod": "POST",
-            "parameters": {
-                "bookmark_id": {
-                    "description": "",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "bundle_id": {
-                    "description": "bundle identifier",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                },
-                "debug": {
-                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
-                    "location": "query",
-                    "required": false,
-                    "type": "boolean"
-                },
-                "etag": {
-                    "description": "The HTTP Etag to present upstream.",
-                    "filters": [
-                        "RavelryApi\\TypeConversion::toQuotedEtag"
-                    ],
-                    "location": "header",
-                    "required": false,
-                    "sentAs": "If-None-Match",
-                    "type": "string"
-                },
-                "extras": {
-                    "description": "Include extra \"polling\" data in the result.",
-                    "location": "query",
-                    "required": false,
-                    "type": "boolean"
-                },
-                "id": {
-                    "description": "ID of the bundled item to update",
-                    "location": "uri",
-                    "required": true,
-                    "type": "string"
-                },
-                "item_id": {
-                    "description": "item identifier. May only be set during creation.",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                },
-                "item_type": {
-                    "description": "the type of item - clipping, pattern, designer, project, stash, yarn_company, yarn, shop, forum_post, fiber_stash, bundle, or pattern_source",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "notes": {
-                    "description": "",
-                    "location": "json",
-                    "required": false,
-                    "type": "string"
-                },
-                "user_id": {
-                    "description": "User ID of the item owner.",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
-                }
-            },
-            "responseModel": "json",
-            "uri": "/bundled_items/{id}.json"
         },
         "bundles_create": {
             "_cliname": "bundles:create",
@@ -654,6 +512,12 @@
                     "location": "query",
                     "required": false,
                     "type": "number"
+                },
+                "query": {
+                    "description": "Search query for bundles.",
+                    "location": "query",
+                    "required": false,
+                    "type": "string"
                 },
                 "username": {
                     "description": "User to retrieve bundles from",
@@ -1243,6 +1107,56 @@
             "responseModel": "json",
             "uri": "/extras/create_attachment.json"
         },
+        "favorites_addtobundle": {
+            "_cliname": "favorites:add-to-bundle",
+            "description": "Add a favorite record to a bundle",
+            "documentationUrl": "http://www.ravelry.com/api#favorites_add_to_bundle",
+            "httpMethod": "POST",
+            "parameters": {
+                "bundle_id": {
+                    "description": "Id of the bundle the favorite should be added to",
+                    "location": "postField",
+                    "required": true,
+                    "type": "integer"
+                },
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Id of the favorite record",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                },
+                "username": {
+                    "description": "User who owns the favorite record",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/people/{username}/favorites/{id}/add_to_bundle.json"
+        },
         "favorites_create": {
             "_cliname": "favorites:create",
             "description": "Create favorite record",
@@ -1428,7 +1342,8 @@
                         "forumpost",
                         "designer",
                         "yarnbrand",
-                        "yarnshop"
+                        "yarnshop",
+                        "bundle"
                     ],
                     "filters": [
                         {
@@ -1451,6 +1366,100 @@
             },
             "responseModel": "json",
             "uri": "/people/{username}/favorites/list.json"
+        },
+        "favorites_removefrombundle": {
+            "_cliname": "favorites:remove-from-bundle",
+            "description": "Remove a favorite record from a bundle",
+            "documentationUrl": "http://www.ravelry.com/api#favorites_remove_from_bundle",
+            "httpMethod": "POST",
+            "parameters": {
+                "bundle_id": {
+                    "description": "Id of the bundle the favorite should be removed from",
+                    "location": "postField",
+                    "required": true,
+                    "type": "integer"
+                },
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Id of the favorite record",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                },
+                "username": {
+                    "description": "User who owns the favorite record",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/people/{username}/favorites/{id}/remove_from_bundle.json"
+        },
+        "favorites_show": {
+            "_cliname": "favorites:show",
+            "description": "Retrieve a favorite record",
+            "documentationUrl": "http://www.ravelry.com/api#favorites_show",
+            "httpMethod": "GET",
+            "parameters": {
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "ID of the favorite to retrieve",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                },
+                "username": {
+                    "description": "User who owns the favorite record",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/people/{username}/favorites/{id}.json"
         },
         "favorites_update": {
             "_cliname": "favorites:update",
@@ -2595,6 +2604,44 @@
             "responseModel": "json",
             "uri": "/people/{username}/library/search.json"
         },
+        "messages_archive": {
+            "_cliname": "messages:archive",
+            "description": "Archive a message",
+            "documentationUrl": "http://www.ravelry.com/api#messages_archive",
+            "httpMethod": "POST",
+            "parameters": {
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Message ID to archive",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/messages/{id}/archive.json"
+        },
         "messages_create": {
             "_cliname": "messages:create",
             "description": "Create and send a private message to another Ravelry user",
@@ -2650,6 +2697,44 @@
             },
             "responseModel": "json",
             "uri": "/messages/create.json"
+        },
+        "messages_delete": {
+            "_cliname": "messages:delete",
+            "description": "Delete a message",
+            "documentationUrl": "http://www.ravelry.com/api#messages_delete",
+            "httpMethod": "DELETE",
+            "parameters": {
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Message ID to delete",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/messages/{id}.json"
         },
         "messages_list": {
             "_cliname": "messages:list",
@@ -2903,6 +2988,44 @@
             },
             "responseModel": "json",
             "uri": "/messages/{id}.json"
+        },
+        "messages_unarchive": {
+            "_cliname": "messages:unarchive",
+            "description": "Archive a message",
+            "documentationUrl": "http://www.ravelry.com/api#messages_unarchive",
+            "httpMethod": "POST",
+            "parameters": {
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Message ID to unarchive",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/messages/{id}/unarchive.json"
         },
         "needles_list": {
             "_cliname": "needles:list",
@@ -3160,7 +3283,7 @@
                     "required": false,
                     "type": "integer"
                 },
-                "total_length": {
+                "total_weight": {
                     "description": "length of this allocation of yarn.",
                     "location": "json",
                     "required": false,
@@ -3412,7 +3535,7 @@
                     "required": false,
                     "type": "integer"
                 },
-                "total_length": {
+                "total_weight": {
                     "description": "length of this allocation of yarn.",
                     "location": "json",
                     "required": false,
@@ -3871,6 +3994,44 @@
             },
             "responseModel": "json",
             "uri": "/pattern_sources/search.json"
+        },
+        "patternsources_show": {
+            "_cliname": "pattern-sources:show",
+            "description": "Get pattern source details",
+            "documentationUrl": "http://www.ravelry.com/api#pattern_sources_show",
+            "httpMethod": "GET",
+            "parameters": {
+                "debug": {
+                    "description": "Encourage Ravelry servers to retain debug information about this API call.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "etag": {
+                    "description": "The HTTP Etag to present upstream.",
+                    "filters": [
+                        "RavelryApi\\TypeConversion::toQuotedEtag"
+                    ],
+                    "location": "header",
+                    "required": false,
+                    "sentAs": "If-None-Match",
+                    "type": "string"
+                },
+                "extras": {
+                    "description": "Include extra \"polling\" data in the result.",
+                    "location": "query",
+                    "required": false,
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "Pattern source to retrieve",
+                    "location": "uri",
+                    "required": true,
+                    "type": "string"
+                }
+            },
+            "responseModel": "json",
+            "uri": "/pattern_sources/{id}.json"
         },
         "people_show": {
             "_cliname": "people:show",
@@ -4466,7 +4627,7 @@
                             "required": false,
                             "type": "integer"
                         },
-                        "total_length": {
+                        "total_weight": {
                             "description": "length of this allocation of yarn.",
                             "required": false,
                             "type": "string"
@@ -5120,7 +5281,7 @@
                             "required": false,
                             "type": "integer"
                         },
-                        "total_length": {
+                        "total_weight": {
                             "description": "length of this allocation of yarn.",
                             "required": false,
                             "type": "string"
@@ -6077,7 +6238,7 @@
                             "required": false,
                             "type": "integer"
                         },
-                        "total_length": {
+                        "total_weight": {
                             "description": "length of this allocation of yarn.",
                             "required": false,
                             "type": "string"
@@ -6102,17 +6263,17 @@
                     "required": false,
                     "type": "integer"
                 },
+                "tag_list": {
+                    "description": "List of tags, space delimited",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
                 "username": {
                     "description": "User to create stash for",
                     "location": "uri",
                     "required": true,
                     "type": "string"
-                },
-                "yarn_id": {
-                    "description": "Yarn to link the stash entry to",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
                 }
             },
             "responseModel": "json",
@@ -6667,7 +6828,7 @@
                             "required": false,
                             "type": "integer"
                         },
-                        "total_length": {
+                        "total_weight": {
                             "description": "length of this allocation of yarn.",
                             "required": false,
                             "type": "string"
@@ -6692,17 +6853,17 @@
                     "required": false,
                     "type": "integer"
                 },
+                "tag_list": {
+                    "description": "List of tags, space delimited",
+                    "location": "json",
+                    "required": false,
+                    "type": "string"
+                },
                 "username": {
                     "description": "User who owns stash",
                     "location": "uri",
                     "required": true,
                     "type": "string"
-                },
-                "yarn_id": {
-                    "description": "Yarn to link the stash entry to",
-                    "location": "json",
-                    "required": false,
-                    "type": "integer"
                 }
             },
             "responseModel": "json",
