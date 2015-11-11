@@ -285,6 +285,10 @@ for ($i = 0; $i < 10; $i += 1) {
     ];
 }
 
+$schema['operations']['fiber_createphoto']['parameters']['source_url']['type'] = 'string';
+$schema['operations']['projects_createphoto']['parameters']['source_url']['type'] = 'string';
+$schema['operations']['stash_createphoto']['parameters']['source_url']['type'] = 'string';
+
 $json = $schema['models']['json'];
 unset($schema['models']);
 $schema['models'] = ['json' => $json];

@@ -1651,7 +1651,7 @@
                     "description": "URL of the image to use (preferably high-res)",
                     "location": "postField",
                     "required": false,
-                    "type": "integer"
+                    "type": "string"
                 },
                 "username": {
                     "description": "Username of the user who owns the fiber stash entry",
@@ -4748,7 +4748,7 @@
                     "description": "URL of the image to use (preferably high-res)",
                     "location": "postField",
                     "required": false,
-                    "type": "integer"
+                    "type": "string"
                 },
                 "username": {
                     "description": "Username of the user who owns the project",
@@ -6323,7 +6323,7 @@
                     "description": "URL of the image to use (preferably high-res)",
                     "location": "postField",
                     "required": false,
-                    "type": "integer"
+                    "type": "string"
                 },
                 "username": {
                     "description": "Username of the user who owns the stash entry",
