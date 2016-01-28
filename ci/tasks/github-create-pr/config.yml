@@ -1,0 +1,20 @@
+---
+platform: "linux"
+image: "docker:///dpb587/ravelry-api-php-default"
+inputs:
+  - name: "repository"
+run:
+  path: "repository/ci/tasks/github-create-pr/run.sh"
+params:
+  PR_TITLE_DATA: ~
+  PR_TITLE_PATH: ~
+  PR_BODY_DATA: ~
+  PR_BODY_PATH: ~
+  GITHUB_HEAD_OWNER: ~
+  GITHUB_HEAD_REPO: ~
+  GITHUB_HEAD_BRANCH: ~
+  GITHUB_BASE_OWNER: ~
+  GITHUB_BASE_REPO: ~
+  GITHUB_BASE_BRANCH: ~
+  GITHUB_AUTH_USER: ~
+  GITHUB_AUTH_TOKEN: ~

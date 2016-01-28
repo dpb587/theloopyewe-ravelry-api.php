@@ -1,0 +1,120 @@
+groups:
+  - name: "all"
+    jobs:
+      - "update-schema"
+      - "build-default-image"
+      - "run-tests"
+
+jobs:
+  - name: "update-schema"
+    serial: true
+    plan:
+      - get: "daily"
+        trigger: true
+      - get: "default-docker-image"
+        trigger: true
+        params:
+          skip_download: true
+      - get: "repository"
+      - task: "update"
+        file: "repository/ci/tasks/schema-updates/config.yml"
+        config:
+          params:
+            COMPOSER_GITHUB_TOKEN: {{composer_github_token}}
+            RAVELRY_LOGIN: {{ravelry_login}}
+            RAVELRY_PASSWORD: {{ravelry_password}}
+            RAVELRY_TEST_ACCESS_KEY: {{ravelry_api_access_key}}
+            RAVELRY_TEST_SECRET_KEY: {{ravelry_api_secret_key}}
+            RAVELRY_TEST_ACCESS_TOKEN: {{ravelry_access_token}}
+            RAVELRY_TEST_ACCESS_TOKEN_SECRET: {{ravelry_access_token_secret}}
+            GIT_AUTHOR_NAME: {{git_author_name}}
+            GIT_AUTHOR_EMAIL: {{git_author_email}}
+        on_failure:
+          do:
+            - put: "repository-update-wip"
+              params:
+                repository: "updated/repository"
+            - task: "create-pr"
+              file: "repository/ci/tasks/github-create-pr/config.yml"
+              config:
+                params:
+                  PR_TITLE_DATA: "Ravelry API Updated"
+                  PR_BODY_DATA: "Looks like the API changed... take a look and fix the broken tests before merging."
+                  GITHUB_HEAD_OWNER: {{repository_owner}}
+                  GITHUB_HEAD_REPO: {{repository_name}}
+                  GITHUB_HEAD_BRANCH: {{repository_branch_update_wip}}
+                  GITHUB_BASE_OWNER: {{repository_owner}}
+                  GITHUB_BASE_REPO: {{repository_name}}
+                  GITHUB_BASE_BRANCH: {{repository_branch}}
+                  GITHUB_AUTH_USER: {{github_api_user}}
+                  GITHUB_AUTH_TOKEN: {{github_api_token}}
+      - put: "repository"
+        params:
+          repository: "update/updated/repository"
+  - name: "build-default-image"
+    serial: true
+    plan:
+      - get: "repository"
+        resource: "repository.ci.docker"
+        trigger: true
+      - put: "default-docker-image"
+        params:
+          build: "repository/ci/docker/default"
+        get_params:
+          skip_download: true
+  - name: "run-tests"
+    serial: true
+    plan:
+      - get: "repository"
+        trigger: true
+      - task: "run-tests"
+        file: "repository/ci/tasks/run-tests/config.yml"
+        config:
+          params:
+            COMPOSER_GITHUB_TOKEN: {{composer_github_token}}
+            RAVELRY_TEST_ACCESS_KEY: {{ravelry_api_access_key}}
+            RAVELRY_TEST_SECRET_KEY: {{ravelry_api_secret_key}}
+            RAVELRY_TEST_ACCESS_TOKEN: {{ravelry_access_token}}
+            RAVELRY_TEST_ACCESS_TOKEN_SECRET: {{ravelry_access_token_secret}}
+      - put: "repository-master"
+        params:
+          repository: "repository"
+
+resources:
+  - name: "daily"
+    type: "time"
+    source:
+      interval: "24h"
+  - name: "repository"
+    type: "git"
+    source:
+      uri: {{repository_uri}}
+      branch: {{repository_branch}}
+      private_key: {{repository_key}}
+  - name: "repository-master"
+    type: "git"
+    source:
+      uri: {{repository_uri}}
+      branch: {{repository_branch_master}}
+      private_key: {{repository_key}}
+  - name: "repository-update-wip"
+    type: "git"
+    source:
+      uri: {{repository_uri}}
+      branch: {{repository_branch_update_wip}}
+      private_key: {{repository_key}}
+  - name: "repository.ci.docker"
+    type: "git"
+    source:
+      uri: {{repository_uri}}
+      branch: {{repository_branch}}
+      private_key: {{repository_key}}
+      paths:
+        - "ci/docker/*"
+  - name: "default-docker-image"
+    type: "docker-image"
+    source:
+      repository: {{docker_repository_default}}
+      username: {{docker_username}}
+      password: {{docker_password}}
+      email: {{docker_email}}

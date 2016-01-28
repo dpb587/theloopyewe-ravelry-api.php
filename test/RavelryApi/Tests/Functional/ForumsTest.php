@@ -6,16 +6,13 @@ class ForumsTest extends TestCase
 {
     public function testSets()
     {
-        $result = $this->client->forums->sets([
-            'id' => 'TheLoopyEwe',
-        ]);
+        $result = $this->client->forums->sets();
 
         $this->assertArrayHasKey('sort_order', $result['forum_sets'][0]);
         $this->assertInternalType('boolean', $result['forum_sets'][0]['default']);
         $this->assertArrayHasKey('name', $result['forum_sets'][0]);
         $this->assertInternalType('array', $result['forum_sets'][0]['selected_forums']);
         $this->assertArrayHasKey('permalink', $result['forum_sets'][0]);
-        $this->assertInternalType('integer', $result['forum_sets'][0]['id']);
     }
 
     public function testTopics()

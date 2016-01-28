@@ -1,0 +1,19 @@
+---
+platform: "linux"
+image: "docker:///dpb587/ravelry-api-php-default"
+inputs:
+  - name: "repository"
+outputs:
+  - name: "updated"
+run:
+  path: "repository/ci/tasks/schema-updates/run.sh"
+params:
+  COMPOSER_GITHUB_TOKEN: optional
+  RAVELRY_LOGIN:    required
+  RAVELRY_PASSWORD: required
+  RAVELRY_TEST_ACCESS_KEY: required
+  RAVELRY_TEST_SECRET_KEY: required
+  RAVELRY_TEST_ACCESS_TOKEN: required
+  RAVELRY_TEST_ACCESS_TOKEN_SECRET: required
+  GIT_AUTHOR_NAME:  "CI Bot"
+  GIT_AUTHOR_EMAIL: "ci@localhost"

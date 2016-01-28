@@ -32,7 +32,7 @@ For [OAuth](http://oauth.net/), use an [`OauthTokenStorage`](./src/RavelryApi/Au
 and include your access and secret key...
 
     $auth = new RavelryApi\Authentication\OauthAuthentication(
-        new RavelryApi\Authentication\TokenStorage\NativeSessionTokenStorage(),
+        new RavelryApi\Authentication\OauthTokenStorage\FileTokenStorage(),
         $accessKey,
         $secretKey
     );
@@ -102,7 +102,7 @@ There is a `./test/cleanup.php` script which will clean up any objects left behi
 ## References
 
  * http://www.ravelry.com/api - Ravelry's API Documentation
- * https://github.com/dpb587/ravelry-api-php-cli - a CLI for the API (uses this library)
+ * https://github.com/dpb587/ravelry-api-cli.php - a CLI for the API (uses this library)
 
 
 ## License

@@ -9,7 +9,7 @@ use PHPUnit_Framework_AssertionFailedError;
 use GuzzleHttp\Event\SubscriberInterface;
 use RavelryApi\Tests\Functional\TestCase;
 use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\CompleteEvent;
+use GuzzleHttp\Event\AbstractRequestEvent;
 
 class HttpRequestTestListener extends PHPUnit_Framework_BaseTestListener implements
     SubscriberInterface
@@ -73,7 +73,7 @@ class HttpRequestTestListener extends PHPUnit_Framework_BaseTestListener impleme
         ];
     }
 
-    public function onComplete(CompleteEvent $e)
+    public function onComplete(AbstractRequestEvent $e)
     {
         $this->requests[] = [
             'request' => $e->getRequest(),

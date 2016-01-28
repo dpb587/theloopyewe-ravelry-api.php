@@ -4,6 +4,8 @@ namespace RavelryApi\Tests\Functional;
 
 use GuzzleHttp\Event\SubscriberInterface;
 use RavelryApi\Authentication\BasicAuthentication;
+use RavelryApi\Authentication\OauthAuthentication;
+use RavelryApi\Authentication\OauthTokenStorage\FileTokenStorage;
 use RavelryApi\Client;
 
 /**
@@ -19,16 +21,21 @@ class TestCase extends \PHPUnit_Framework_TestCase
     {
         if (0 == strlen(getenv('RAVELRY_TEST_ACCESS_KEY'))) {
             throw new \LogicException('Environment variable RAVELRY_TEST_ACCESS_KEY must be defined.');
-        } elseif (0 == strlen(getenv('RAVELRY_TEST_PERSONAL_KEY'))) {
-            throw new \LogicException('Environment variable RAVELRY_TEST_PERSONAL_KEY must be defined.');
         }
-        
-        return new Client(
-            new BasicAuthentication(
+
+        if (0 < strlen(getenv('RAVELRY_TEST_PERSONAL_KEY'))) {
+            $auth = new BasicAuthentication(getenv('RAVELRY_TEST_ACCESS_KEY'), getenv('RAVELRY_TEST_PERSONAL_KEY'));
+        } elseif (0 < strlen(getenv('RAVELRY_TEST_SECRET_KEY'))) {
+            $auth = new OauthAuthentication(
+                new FileTokenStorage('.ravelryapi', false),
                 getenv('RAVELRY_TEST_ACCESS_KEY'),
-                getenv('RAVELRY_TEST_PERSONAL_KEY')
-            )
-        );
+                getenv('RAVELRY_TEST_SECRET_KEY')
+            );
+        } else {
+            throw new \LogicException('Environment variable RAVELRY_TEST_PERSONAL_KEY or RAVELRY_TEST_SECRET_KEY must be defined.');
+        }
+
+        return new Client($auth);
     }
 
     public function setUp()
@@ -80,7 +87,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         return $this->client;
     }
 
-    public function retryTimes($callable, $delay = 10, $times = 6)
+    public function retryTimes($callable, $delay = 10, $times = 12)
     {
         for ($try = 0; $try < $times; $try += 1) {
             if (null !== $result = call_user_func_array($callable, [ $this ])) {
