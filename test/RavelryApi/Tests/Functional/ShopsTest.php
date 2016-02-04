@@ -10,7 +10,7 @@ class ShopsTest extends TestCase
             'query' => 'ewe',
             'lat' => '40.5566585',
             'lng' => '-105.067652',
-            'radius' => '10',
+            'radius' => 10,
             'units' => 'km',
         ]);
 
