@@ -505,13 +505,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25. Maximum size accepted = 100",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search query for bundles.",
@@ -1013,13 +1013,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25. Maximum size accepted = 100",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 }
             },
             "responseModel": "json",
@@ -1311,13 +1311,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25. Maximum size accepted = 100",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search query for full text search. Cannot be combined with \"tag\" parameter.",
@@ -2105,13 +2105,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25. Maximum size accepted = 50",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "username": {
                     "description": "Friends will be selected from this user",
@@ -2281,13 +2281,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search term for fulltext searching",
@@ -2556,13 +2556,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Number of results per page. Defaults to 100",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Full text search string",
@@ -2789,13 +2789,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Size of result pages. Defaults to 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "search": {
                     "description": "Search term for fulltext searching messages",
@@ -3700,13 +3700,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25 comments per page. Maximum is 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort order.",
@@ -3761,13 +3761,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Number of results per page. Defaults to 100",
                     "location": "query",
                     "required": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "photoless": {
                     "description": "Set to \"1\" if want to return results that do not have a photo",
@@ -3833,13 +3833,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Number of results to retrieve. Defaults to 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "personal_attributes": {
                     "description": "set to 1 if you would like to return the personal_attributes hash in the result objects",
@@ -3933,13 +3933,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": true,
-                    "type": "number"
+                    "type": "integer"
                 }
             },
             "responseModel": "json",
@@ -3977,13 +3977,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_number": {
                     "description": "Number of results to retrieve. Defaults to 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search term for fulltext searching patterns",
@@ -4395,13 +4395,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25 comments per page. Maximum is 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort order.",
@@ -4854,13 +4854,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to null (the entire result set in 1 page)",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort order. Multiple space-delimited options are accepted.",
@@ -5006,13 +5006,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search term for fulltext searching",
@@ -5549,13 +5549,13 @@
                     "description": "Result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "pattern_id": {
                     "description": "Pattern ID to filter for",
@@ -5924,13 +5924,13 @@
                     "description": "result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "number of results per page. Defaults to 100",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "search query for full text search",
@@ -5942,13 +5942,13 @@
                     "description": "radius for geographical search",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "shop_type_id": {
                     "description": "restrict shop type, 1 = Local Yarn Store",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "units": {
                     "description": "units for geo search, \"miles\" or \"km\"",
@@ -6056,13 +6056,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 25 comments per page. Maximum is 100.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort order.",
@@ -6411,13 +6411,13 @@
                     "description": "If paging is desired, result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "If paging is desired, number of results per page. Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort order. Defaults to \"alpha\".",
@@ -6530,13 +6530,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search term for fulltext searching",
@@ -6635,13 +6635,13 @@
                     "description": "If paging is desired, result page to retrieve. Defaults to 1 (the first page).",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "If paging is desired, number of results per page. Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "sort": {
                     "description": "Sort by Defaults to \"alpha\".",
@@ -7834,13 +7834,13 @@
                     "description": "Result page to retrieve. Defaults to first page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "page_size": {
                     "description": "Defaults to 50 results per page.",
                     "location": "query",
                     "required": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "query": {
                     "description": "Search term for fulltext searching yarns",
