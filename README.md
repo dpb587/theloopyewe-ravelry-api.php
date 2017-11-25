@@ -14,7 +14,7 @@ The source code is located in [`./src`](./src) and dependencies are managed with
 
 For integration, it's easiest to require with [`composer`](https://getcomposer.org/)...
 
-    composer.phar require dpb587/ravelry-api=0.2.0
+    composer.phar require dpb587/ravelry-api=dev-master
 
 For development, it's easiest to clone with [`git`](http://git-scm.com/)...
 
